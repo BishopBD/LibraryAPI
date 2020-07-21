@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibraryApi", "LibraryApi\Li
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibraryApiIntegrationTests", "LibraryApiIntegrationTests\LibraryApiIntegrationTests.csproj", "{3D9F674D-A241-4167-B56B-1263AD34C22E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiClient", "ApiClient\ApiClient.csproj", "{BD30B59E-E1DF-4F78-8F7F-F4B7F6053813}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{3D9F674D-A241-4167-B56B-1263AD34C22E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D9F674D-A241-4167-B56B-1263AD34C22E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D9F674D-A241-4167-B56B-1263AD34C22E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD30B59E-E1DF-4F78-8F7F-F4B7F6053813}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD30B59E-E1DF-4F78-8F7F-F4B7F6053813}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD30B59E-E1DF-4F78-8F7F-F4B7F6053813}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD30B59E-E1DF-4F78-8F7F-F4B7F6053813}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
