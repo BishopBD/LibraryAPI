@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using AutoMapper;
 using LibraryApi.Controllers;
@@ -17,6 +18,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using RabbitMqUtils;
 
 namespace LibraryApi
 {
@@ -36,6 +38,7 @@ namespace LibraryApi
                 .AddJsonOptions(options =>
                 {
                     options.JsonSerializerOptions.IgnoreNullValues = true;
+                    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
                 });
 
             services.AddTransient<ISystemTime, SystemTime>();
@@ -55,7 +58,7 @@ namespace LibraryApi
             IMapper mapper = mappingConfig.CreateMapper();
 
             services.AddSingleton<IMapper>(mapper);
-            services.AddSingleton<MapperConfiguration>(mappingConfig);
+            services.AddSingleton<MapperConfiguration>(mappingConfig);            
 
             services.AddTransient<ILookupOnCallDevelopers, TeamsOnCallDeveloperLookup>();
 
@@ -63,6 +66,9 @@ namespace LibraryApi
             {
                 options.Configuration = Configuration.GetValue<string>("redisHost");
             });
+
+            services.AddRabbit(Configuration);
+            services.AddTransient<IWriteToTheMessageQueue, RabbitMQReservationProcessor>();
 
             services.AddSwaggerGen(c =>
             {
